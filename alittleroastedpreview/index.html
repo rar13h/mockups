@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Little Roasted | Coffee, matcha & pop-ups</title>
+<meta name="description" content="A Little Roasted, Justine's Coffee Cart: coffee, matcha and housemade syrups. Pop-ups coming soon. Find us on Instagram @alittleroasted.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --butter:#fde7ae;
+  --butter-deep:#f8d47e;
+  --cream:#fffaee;
+  --espresso:#3b1e0c;
+  --roast:#6b3f26;
+  --tan:#d9b48a;
+  --caramel:#c8873f;
+  --berry:#ff9fae;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--espresso);
+  font-family:"Fredoka",system-ui,sans-serif;font-size:17px;line-height:1.5;overflow-x:hidden;
+}
+h1,h2,h3{margin:0;line-height:1.05}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.hand{font-family:"Gaegu",cursive;font-weight:700}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:20;background:var(--butter);border-bottom:3px solid var(--espresso);
+  padding:8px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700}
+.logo img{width:52px;height:52px;border-radius:50%;display:block;transition:transform .4s}
+.logo:hover img{transform:rotate(-12deg) scale(1.08)}
+.logo span{font-size:1.1rem;letter-spacing:.04em;text-transform:uppercase}
+nav .links{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+nav .links a{text-decoration:none;font-weight:500;padding:3px 12px;border-radius:99px;transition:background .2s,transform .2s}
+nav .links a:hover{background:rgba(59,30,12,.12);transform:translateY(-2px) rotate(-2deg)}
+nav .links a.ig{background:var(--espresso);color:var(--butter);font-weight:600}
+nav .links a.ig:hover{background:var(--roast)}
+
+/* BUNTING */
+.bunting{display:block;width:100%;height:46px;background:var(--butter)}
+.bunting svg{width:100%;height:100%;display:block}
+.flag{transform-box:fill-box;transform-origin:50% 0;animation:sway 3s ease-in-out infinite}
+.flag:nth-child(2n){animation-delay:-.7s}
+.flag:nth-child(3n){animation-delay:-1.4s}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:var(--butter);padding:14px 0 90px}
+.rays{
+  position:absolute;left:50%;top:60%;width:220vmax;height:220vmax;translate:-50% -50%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.35) 0 7.5deg,transparent 7.5deg 15deg);
+  animation:spin 120s linear infinite;pointer-events:none;
+}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.pill{display:inline-block;background:var(--espresso);color:var(--butter);padding:4px 16px;border-radius:99px;font-weight:600;font-size:.9rem;transform:rotate(-3deg);animation:wiggle 3s ease-in-out infinite}
+.hero h1{font-size:clamp(3rem,9vw,5.6rem);margin:16px 0 12px;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+.hero h1 span{display:block;color:var(--roast)}
+.hero h1 .bob{display:inline-block;animation:bob 2.4s ease-in-out infinite}
+.hero p{font-size:1.15rem;max-width:34ch;margin:0 0 22px}
+.btn{
+  display:inline-block;background:var(--espresso);color:var(--butter);font-weight:700;text-decoration:none;
+  padding:12px 24px;border-radius:99px;border:3px solid var(--espresso);box-shadow:4px 4px 0 var(--caramel);
+  transition:transform .15s,box-shadow .15s;
+}
+.btn:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:7px 7px 0 var(--caramel)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--caramel)}
+.btn.alt{background:var(--cream);color:var(--espresso);margin-left:8px}
+.hero-art{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:300px;gap:0}
+.sparkle{position:absolute;color:var(--caramel);font-size:1.6rem;animation:twinkle 2s ease-in-out infinite}
+.sparkle:nth-child(1){top:4%;left:10%}
+.sparkle:nth-child(2){top:14%;right:6%;animation-delay:-.7s;color:var(--roast)}
+.sparkle:nth-child(3){bottom:34%;left:0;animation-delay:-1.3s;color:#fff}
+
+/* bean mascot */
+.bean{width:min(250px,52vw);height:auto;overflow:visible;position:relative;z-index:1}
+.bean .body{transform-box:view-box;transform-origin:105px 235px;animation:beanSway 5s ease-in-out infinite}
+.bean .sipper{transform-box:view-box;transform-origin:152px 165px;animation:sip 5s ease-in-out infinite}
+.bean .eyes{transform-box:fill-box;transform-origin:center;animation:sipEyes 5s ease-in-out infinite}
+.bean .happy{opacity:0;animation:happyEyes 5s ease-in-out infinite}
+.bean .steam path{stroke-dasharray:6 8;animation:steamLine 2s linear infinite}
+.bean .steam path:nth-child(2){animation-delay:-.7s}
+.bean .steam path:nth-child(3){animation-delay:-1.3s}
+.bean .leg{transform-box:fill-box;transform-origin:50% 0;animation:legs 5s ease-in-out infinite}
+
+/* cat */
+.cat{width:min(200px,42vw);height:auto;cursor:pointer;overflow:visible;margin-left:-14px}
+.cat .tail{transform-origin:150px 168px;animation:tail 1.6s ease-in-out infinite}
+.cat .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+.cat .ear-l{transform-origin:72px 52px;animation:ear 5s infinite}
+.cat .head{transform-origin:100px 120px;animation:tilt 6s ease-in-out infinite}
+.purr{position:absolute;top:6%;right:8%;font-weight:700;opacity:0;background:#fff;color:var(--espresso);border:2px solid var(--espresso);padding:4px 14px;border-radius:99px;pointer-events:none;z-index:3}
+.purr.show{animation:purr 1.4s ease-out}
+.heart{position:absolute;pointer-events:none;font-size:1.4rem;animation:floatup 1.4s ease-out forwards;z-index:3}
+
+.wave{display:block;width:100%;height:50px;margin-top:-49px;position:relative}
+
+/* SECTIONS */
+section{padding:64px 0}
+.eyebrow{font-size:1.5rem;color:var(--caramel);margin-bottom:4px}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:700}
+.sub{max-width:52ch;margin:10px 0 32px}
+
+/* MENU (clean vertical list, like their menu post) */
+#menu{background:var(--cream)}
+.menu-card{
+  max-width:720px;margin:0 auto;background:#fff;border:3px solid var(--espresso);border-radius:28px;
+  padding:30px 28px 26px;box-shadow:8px 8px 0 var(--butter-deep);position:relative;
+}
+.menu-head{text-align:center;margin-bottom:8px}
+.menu-head h2{text-transform:uppercase;letter-spacing:.08em;font-size:clamp(1.8rem,5vw,2.6rem)}
+.menu-head .hand{font-size:1.4rem;color:var(--caramel)}
+.item{
+  display:flex;gap:16px;align-items:center;padding:16px 8px;border-bottom:2px dashed var(--tan);
+  transition:transform .2s,background .2s;border-radius:14px;
+}
+.item:last-of-type{border-bottom:0}
+.item:hover{background:var(--butter);transform:translateX(6px) rotate(-.5deg)}
+.item .cup{
+  flex:none;width:46px;height:52px;border:3px solid var(--espresso);border-radius:6px 6px 22px 22px;position:relative;overflow:hidden;
+}
+.item .cup::after{
+  content:"";position:absolute;left:-20%;width:140%;height:18px;bottom:45%;border-radius:50%;
+  background:rgba(255,255,255,.5);animation:slosh 2.8s ease-in-out infinite;
+}
+.item:hover .cup{animation:wiggle .5s ease-in-out}
+.item h3{font-size:1.3rem;text-transform:uppercase;letter-spacing:.05em}
+.item p{margin:2px 0 0;font-size:.98rem;color:var(--roast)}
+.addon{
+  margin-top:14px;text-align:center;background:var(--butter);border-radius:99px;padding:8px 16px;font-weight:600;
+}
+.note{margin:22px 0 0;text-align:center;font-size:1.3rem;color:var(--roast)}
+
+/* POPUPS */
+#popups{background:var(--espresso);color:var(--butter);position:relative;overflow:hidden}
+#popups .eyebrow{color:var(--butter-deep)}
+.pop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;position:relative}
+.pop{
+  background:var(--butter);color:var(--espresso);border-radius:24px;padding:22px;border:3px solid var(--cream);
+  box-shadow:6px 6px 0 var(--caramel);transition:transform .2s;
+}
+.pop:nth-child(1){transform:rotate(-1.5deg)}
+.pop:nth-child(2){transform:rotate(1deg)}
+.pop:nth-child(3){transform:rotate(-.5deg)}
+.pop:hover{transform:rotate(0) scale(1.03)}
+.soon{display:inline-block;background:var(--espresso);color:var(--butter);border-radius:99px;padding:2px 12px;font-weight:700;font-size:.8rem;animation:pulse 1.8s infinite}
+.pop h3{font-size:1.4rem;margin:12px 0 4px}
+.pop .when{font-size:1.4rem;color:var(--roast)}
+.peek{position:absolute;right:6%;top:-2px;width:120px;z-index:1}
+.peek .paw{animation:peek 3.5s ease-in-out infinite}
+.notify{margin-top:34px;font-size:1.2rem}
+
+/* FIND */
+#find{background:var(--butter)}
+.find-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.sticker-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.sticker{background:#fff;border:3px solid var(--espresso);border-radius:99px;padding:6px 16px;font-weight:600;transition:transform .2s}
+.sticker:hover{transform:rotate(-4deg) scale(1.08)}
+.badge{display:grid;place-items:center}
+.badge img{width:min(240px,70vw);height:auto;border-radius:50%;border:4px solid var(--espresso);box-shadow:8px 8px 0 var(--caramel);animation:wiggle 5s ease-in-out infinite}
+
+footer{background:var(--espresso);color:var(--butter);text-align:center;padding:36px 20px 90px}
+footer .hand{font-size:1.5rem}
+footer small{opacity:.75}
+
+/* walking cat */
+.walker{position:fixed;bottom:0;left:0;width:90px;z-index:15;pointer-events:none;animation:walk 26s linear infinite}
+.walker .leg{transform-box:fill-box;transform-origin:50% 0;animation:step .5s ease-in-out infinite alternate}
+.walker .leg.b{animation-direction:alternate-reverse}
+.walker .wtail{transform-origin:22px 40px;animation:tail 1s ease-in-out infinite}
+
+.paws{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.paws span{position:absolute;font-size:1.6rem;opacity:.16;animation:drift 12s linear infinite}
+
+@keyframes spin{to{rotate:360deg}}
+@keyframes sway{0%,100%{rotate:-6deg}50%{rotate:6deg}}
+@keyframes wiggle{0%,100%{rotate:-3deg}50%{rotate:3deg}}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes pulse{0%,100%{scale:1}50%{scale:1.1}}
+@keyframes twinkle{0%,100%{scale:.7;opacity:.5}50%{scale:1.25;opacity:1}}
+@keyframes tail{0%,100%{rotate:-14deg}50%{rotate:16deg}}
+@keyframes blink{0%,94%,100%{scale:1 1}97%{scale:1 .1}}
+@keyframes ear{0%,90%,100%{rotate:0deg}94%{rotate:-10deg}97%{rotate:4deg}}
+@keyframes tilt{0%,100%{rotate:-2deg}50%{rotate:3deg}}
+@keyframes slosh{0%,100%{translate:-6px 0}50%{translate:6px 0}}
+@keyframes purr{0%{opacity:0;translate:0 10px}15%,70%{opacity:1;translate:0 -6px}100%{opacity:0;translate:0 -14px}}
+@keyframes floatup{to{translate:0 -70px;opacity:0}}
+@keyframes peek{0%,100%{translate:0 20px}40%,60%{translate:0 0}}
+@keyframes walk{from{translate:-120px 0}to{translate:calc(100vw + 40px) 0}}
+@keyframes step{from{rotate:-28deg}to{rotate:28deg}}
+@keyframes drift{from{translate:0 110%;rotate:0deg}to{translate:0 -20%;rotate:40deg}}
+/* bean: rest, lift mug to mouth, sip (tilt), lower, repeat */
+@keyframes beanSway{0%,100%{rotate:-2deg}50%{rotate:2deg}}
+@keyframes sip{
+  0%,30%{transform:translate(0,0) rotate(0)}
+  42%{transform:translate(-30px,-24px) rotate(-8deg)}
+  52%,66%{transform:translate(-30px,-24px) rotate(-26deg)}
+  78%,100%{transform:translate(0,0) rotate(0)}
+}
+@keyframes sipEyes{0%,44%,70%,100%{scale:1 1}50%,64%{scale:1 .05}}
+@keyframes happyEyes{0%,44%,70%,100%{opacity:0}50%,64%{opacity:1}}
+@keyframes steamLine{to{stroke-dashoffset:-28}}
+@keyframes legs{0%,100%{rotate:0}50%{rotate:6deg}}
+
+@media (max-width:760px){
+  .hero .wrap,.find-grid{grid-template-columns:1fr}
+  .hero{padding-bottom:70px}
+  .hero-art{min-height:250px}
+  .btn.alt{margin-left:0;margin-top:10px}
+  section{padding:48px 0}
+  .peek{width:90px;right:4%}
+  .walker{width:70px}
+  .logo span{font-size:.95rem}
+  .menu-card{padding:22px 16px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important}
+  .bean .happy{opacity:0}
+  .walker{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top"><img src="assets/logo.png" alt="A Little Roasted logo"><span>a little roasted</span></a>
+  <div class="links">
+    <a href="#menu">Menu</a>
+    <a href="#popups">Pop-ups</a>
+    <a href="#find">Find us</a>
+    <a class="ig" href="https://instagram.com/alittleroasted" target="_blank" rel="noopener">@alittleroasted</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="rays"></div>
+  <div class="paws" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <span class="pill">Justine's Coffee Cart</span>
+      <h1>A little <span class="bob">roasted</span></h1>
+      <p>Coffee, matcha and housemade syrups, served at pop-ups around Palm Beach County. Plus one very judgy cat.</p>
+      <a class="btn" href="#menu">See the menu</a>
+      <a class="btn alt" href="#popups">Pop-ups soon</a>
+    </div>
+
+    <div class="hero-art">
+      <span class="sparkle">✦</span><span class="sparkle">✦</span><span class="sparkle">✦</span>
+      <div class="purr" id="purr">purr purr</div>
+
+      <!-- coffee bean mascot sipping hot coffee -->
+      <svg class="bean" viewBox="0 0 240 260" role="img" aria-label="The A Little Roasted coffee bean sipping a hot coffee">
+        <ellipse cx="105" cy="248" rx="58" ry="7" fill="#3b1e0c" opacity=".18"/>
+        <g class="body">
+          <!-- legs -->
+          <g class="leg"><rect x="78" y="196" width="10" height="34" rx="5" fill="#d9b48a" stroke="#3b1e0c" stroke-width="4"/><ellipse cx="80" cy="234" rx="13" ry="6" fill="#3b1e0c"/></g>
+          <g class="leg"><rect x="118" y="196" width="10" height="34" rx="5" fill="#d9b48a" stroke="#3b1e0c" stroke-width="4"/><ellipse cx="126" cy="234" rx="13" ry="6" fill="#3b1e0c"/></g>
+          <!-- bean -->
+          <ellipse cx="105" cy="120" rx="60" ry="84" fill="#d9b48a" stroke="#3b1e0c" stroke-width="5" transform="rotate(-8 105 120)"/>
+          <path d="M96 40 C 60 80, 150 130, 112 200" fill="none" stroke="#a9754a" stroke-width="9" stroke-linecap="round" opacity=".7"/>
+          <!-- face -->
+          <g class="eyes"><circle cx="80" cy="136" r="5.5" fill="#3b1e0c"/><circle cx="112" cy="132" r="5.5" fill="#3b1e0c"/></g>
+          <g class="happy" fill="none" stroke="#3b1e0c" stroke-width="4" stroke-linecap="round"><path d="M73 138 q7 -8 14 0"/><path d="M105 134 q7 -8 14 0"/></g>
+          <circle cx="68" cy="150" r="7" fill="#ff9fae" opacity=".6"/><circle cx="124" cy="146" r="7" fill="#ff9fae" opacity=".6"/>
+          <path d="M88 152 q9 8 18 -1" fill="none" stroke="#3b1e0c" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <!-- mug + hands, lifts to mouth -->
+        <g class="sipper">
+          <path d="M112 176 L136 168" stroke="#3b1e0c" stroke-width="15" stroke-linecap="round"/>
+          <path d="M112 176 L136 168" stroke="#d9b48a" stroke-width="8" stroke-linecap="round"/>
+          <g class="steam" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round">
+            <path d="M138 138 q-6 -10 0 -20 q6 -10 0 -20"/>
+            <path d="M154 138 q-6 -10 0 -20 q6 -10 0 -20"/>
+            <path d="M170 138 q-6 -10 0 -20 q6 -10 0 -20"/>
+          </g>
+          <rect x="130" y="146" width="46" height="46" rx="9" fill="#fff" stroke="#3b1e0c" stroke-width="5"/>
+          <path d="M176 156 h8 a12 12 0 0 1 0 26 h-8" fill="none" stroke="#3b1e0c" stroke-width="5"/>
+          <ellipse cx="153" cy="148" rx="20" ry="4" fill="#6b3f26"/>
+          <rect x="130" y="166" width="46" height="5" fill="#fde7ae" opacity=".8"/>
+          <circle cx="132" cy="168" r="9" fill="#d9b48a" stroke="#3b1e0c" stroke-width="4"/>
+        </g>
+      </svg>
+
+      <!-- cat -->
+      <svg class="cat" id="cat" viewBox="0 0 200 200" role="img" aria-label="Cat. Tap it for a purr.">
+        <path class="tail" d="M150 168 C 195 170, 200 120, 178 108" fill="none" stroke="#f4a259" stroke-width="16" stroke-linecap="round"/>
+        <ellipse cx="100" cy="158" rx="52" ry="38" fill="#f4a259"/>
+        <ellipse cx="100" cy="166" rx="30" ry="26" fill="#ffe3c2"/>
+        <rect x="70" y="180" width="22" height="16" rx="8" fill="#f4a259"/>
+        <rect x="108" y="180" width="22" height="16" rx="8" fill="#f4a259"/>
+        <g class="head">
+          <polygon class="ear-l" points="60,70 66,26 98,54" fill="#f4a259"/>
+          <polygon points="140,70 134,26 102,54" fill="#f4a259"/>
+          <polygon points="68,60 70,40 86,54" fill="#ff8fb8"/>
+          <polygon points="132,60 130,40 114,54" fill="#ff8fb8"/>
+          <ellipse cx="100" cy="86" rx="46" ry="40" fill="#f4a259"/>
+          <path d="M92 50 v14 M100 48 v16 M108 50 v14" stroke="#d9822b" stroke-width="4" stroke-linecap="round"/>
+          <ellipse class="eye" cx="82" cy="86" rx="6" ry="8" fill="#3b1e0c"/>
+          <ellipse class="eye" cx="118" cy="86" rx="6" ry="8" fill="#3b1e0c"/>
+          <circle cx="84" cy="83" r="2" fill="#fff"/><circle cx="120" cy="83" r="2" fill="#fff"/>
+          <ellipse cx="100" cy="100" rx="5" ry="3.5" fill="#ff8fb8"/>
+          <path d="M100 103 v5 M100 108 q-7 7 -14 2 M100 108 q7 7 14 2" fill="none" stroke="#3b1e0c" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="68" cy="100" r="7" fill="#ff8fb8" opacity=".5"/><circle cx="132" cy="100" r="7" fill="#ff8fb8" opacity=".5"/>
+          <path d="M60 96 h-22 M60 104 l-20 6 M140 96 h22 M140 104 l20 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 50 V25 Q 75 0 150 25 T 300 25 T 450 25 T 600 25 T 750 25 T 900 25 T 1050 25 T 1200 25 V50z" fill="#fffaee"/>
+</svg>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-card">
+      <div class="menu-head">
+        <div class="hand">a little roasted</div>
+        <h2>Menu</h2>
+        <p class="hand" style="margin:0;font-size:1.3rem">coffee | matcha | housemade syrups</p>
+      </div>
+
+      <div class="item">
+        <div class="cup" style="background:#e0a94f"></div>
+        <div><h3>Honey Cinnamon</h3><p>Espresso or matcha with honey cinnamon syrup.</p></div>
+      </div>
+      <div class="item">
+        <div class="cup" style="background:#b9733a"></div>
+        <div><h3>Maple Brown Sugar</h3><p>Homemade maple brown sugar syrup.</p></div>
+      </div>
+      <div class="item">
+        <div class="cup" style="background:#f3e3bd"></div>
+        <div><h3>Vanilla Bean</h3><p>Smooth vanilla bean syrup.</p></div>
+      </div>
+      <div class="item">
+        <div class="cup" style="background:#d9a86c"></div>
+        <div><h3>Banana Bread</h3><p>Brown sugar and banana bread flavor.</p></div>
+      </div>
+      <div class="item">
+        <div class="cup" style="background:linear-gradient(#ffb3c9,#9fd18b)"></div>
+        <div><h3>Strawberry Matcha</h3><p>Matcha with strawberry puree.</p></div>
+      </div>
+      <div class="item">
+        <div class="cup" style="background:#ff9fae"></div>
+        <div><h3>Strawberry Lemonade</h3><p>Sweet, tart and refreshing.</p></div>
+      </div>
+
+      <div class="addon">Add vanilla cold foam</div>
+    </div>
+    <p class="note hand">*mockup menu, final descriptions and prices coming soon</p>
+  </div>
+</section>
+
+<section id="popups">
+  <div class="paws" aria-hidden="true"></div>
+  <svg class="peek" viewBox="0 0 120 70" aria-hidden="true">
+    <g class="paw">
+      <polygon points="24,40 26,10 46,28" fill="#f4a259"/><polygon points="96,40 94,10 74,28" fill="#f4a259"/>
+      <ellipse cx="60" cy="52" rx="42" ry="34" fill="#f4a259"/>
+      <ellipse cx="44" cy="46" rx="5" ry="7" fill="#3b1e0c" style="animation:blink 4s infinite;transform-box:fill-box;transform-origin:center"/>
+      <ellipse cx="76" cy="46" rx="5" ry="7" fill="#3b1e0c" style="animation:blink 4s infinite;transform-box:fill-box;transform-origin:center"/>
+      <ellipse cx="60" cy="58" rx="4" ry="3" fill="#ff8fb8"/>
+    </g>
+  </svg>
+  <div class="wrap" style="position:relative">
+    <div class="eyebrow hand">pop-ups</div>
+    <h2>Coming soon to a market near you.</h2>
+    <p class="sub">We pop up, pour drinks, and vanish like a cat at bath time. Dates drop on Instagram first.</p>
+
+    <div class="pop-grid">
+      <article class="pop">
+        <span class="soon">COMING SOON</span>
+        <h3>The Good Day Market</h3>
+        <div class="when hand">Date TBA</div>
+        <p>Boynton Beach, FL. Come sip and say hi.</p>
+      </article>
+      <article class="pop">
+        <span class="soon">COMING SOON</span>
+        <h3>Next Pop-up</h3>
+        <div class="when hand">Date TBA</div>
+        <p>Location revealed on Instagram first.</p>
+      </article>
+      <article class="pop">
+        <span class="soon">COMING SOON</span>
+        <h3>Treats Pop-up</h3>
+        <div class="when hand">Date TBA</div>
+        <p>Drinks plus bites like mini macarons, empanadas and birria tacos.</p>
+      </article>
+    </div>
+    <p class="notify hand">Want the dates first? Follow <a href="https://instagram.com/alittleroasted" target="_blank" rel="noopener">@alittleroasted</a></p>
+  </div>
+</section>
+
+<section id="find">
+  <div class="wrap find-grid">
+    <div>
+      <div class="eyebrow hand">the story</div>
+      <h2>Small batch. Big feelings.</h2>
+      <p class="sub" style="margin-bottom:0">A Little Roasted is Justine's coffee cart: coffee and matcha with housemade syrups, and a cat who supervises everything. Follow along for new flavors and pop-up drops.</p>
+      <div class="sticker-row">
+        <span class="sticker">🍯 Housemade syrups</span>
+        <span class="sticker">🍵 Matcha too</span>
+        <span class="sticker">🐈 Cat approved</span>
+        <span class="sticker">☕ Coffee cart</span>
+      </div>
+      <p style="margin-top:22px"><a class="btn" href="https://instagram.com/alittleroasted" target="_blank" rel="noopener">@alittleroasted on IG</a></p>
+    </div>
+    <div class="badge"><img src="assets/logo.png" alt="A Little Roasted, Justine's Coffee Cart logo"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="hand">a little roasted · Justine's Coffee Cart</div>
+  <p><a href="https://instagram.com/alittleroasted" target="_blank" rel="noopener">instagram.com/alittleroasted</a></p>
+  <small>Design mockup. Not the final site.</small>
+</footer>
+
+<!-- walking cat -->
+<svg class="walker" viewBox="0 0 90 60" aria-hidden="true">
+  <path class="wtail" d="M22 40 C 4 38, 4 20, 12 14" fill="none" stroke="#f4a259" stroke-width="7" stroke-linecap="round"/>
+  <rect class="leg b" x="26" y="42" width="7" height="16" rx="3.5" fill="#d9822b"/>
+  <rect class="leg" x="56" y="42" width="7" height="16" rx="3.5" fill="#d9822b"/>
+  <ellipse cx="44" cy="38" rx="26" ry="14" fill="#f4a259"/>
+  <rect class="leg" x="32" y="42" width="7" height="16" rx="3.5" fill="#f4a259"/>
+  <rect class="leg b" x="62" y="42" width="7" height="16" rx="3.5" fill="#f4a259"/>
+  <circle cx="72" cy="28" r="13" fill="#f4a259"/>
+  <polygon points="62,20 64,8 72,17" fill="#f4a259"/><polygon points="82,20 80,8 72,17" fill="#f4a259"/>
+  <circle cx="76" cy="27" r="2" fill="#3b1e0c"/><circle cx="83" cy="30" r="2" fill="#ff8fb8"/>
+</svg>
+
+<script>
+// bunting flags under the nav
+(function(){
+  var colors=["#fffaee","#c8873f","#ffffff","#6b3f26","#fffaee","#f8d47e","#ffffff","#3b1e0c"];
+  var n=16,w=100/n,g="";
+  for(var i=0;i<n;i++){
+    var x=i*w;
+    g+='<polygon class="flag" points="'+x+'.5,0 '+(x+w-.5)+',0 '+(x+w/2)+',40" fill="'+colors[i%colors.length]+'" stroke="#3b1e0c" stroke-width=".3"/>';
+  }
+  var b=document.createElement("div");
+  b.className="bunting";
+  b.setAttribute("aria-hidden","true");
+  b.innerHTML='<svg viewBox="0 0 100 46" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="0" stroke="#3b1e0c" stroke-width=".6"/>'+g+'</svg>';
+  document.querySelector("nav").after(b);
+})();
+
+// drifting paw prints
+document.querySelectorAll(".paws").forEach(function(box){
+  for(var i=0;i<8;i++){
+    var s=document.createElement("span");
+    s.textContent="🐾";
+    s.style.left=(i*13+Math.random()*8)+"%";
+    s.style.animationDelay=(-Math.random()*12)+"s";
+    s.style.animationDuration=(10+Math.random()*8)+"s";
+    box.appendChild(s);
+  }
+});
+
+// tap the cat: purr and hearts
+var cat=document.getElementById("cat"),purr=document.getElementById("purr");
+cat.addEventListener("click",function(){
+  purr.classList.remove("show");void purr.offsetWidth;purr.classList.add("show");
+  var art=cat.parentElement;
+  for(var i=0;i<5;i++){
+    var h=document.createElement("span");
+    h.className="heart";h.textContent=["🤎","💛","🧡"][i%3];
+    h.style.right=(8+Math.random()*20)+"%";h.style.top=(25+Math.random()*30)+"%";
+    h.style.animationDelay=(i*.08)+"s";
+    art.appendChild(h);
+    setTimeout(function(x){x.remove()},1700,h);
+  }
+});
+</script>
+</body>
+</html>
